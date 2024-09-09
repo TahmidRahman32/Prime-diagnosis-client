@@ -1,0 +1,58 @@
+[
+   {
+      "title": "Complete Blood Count (CBC) with Blood Film",
+      "description": "A comprehensive blood test to assess overall health and detect a variety of disorders, including anemia, infection, and many other diseases.",
+      "included_tests": ["CBC with Blood Film", "Hemoglobin", "Hematocrit", "Platelet Count", "Red Blood Cell Count", "White Blood Cell Count"],
+      "image_url": "https://i.ibb.co.com/pPBmYPt/img1.jpg",
+      "price": 50.0
+   },
+   {
+      "title": "Diabetes Screening",
+      "description": "A series of tests to diagnose and monitor diabetes and its complications.",
+      "included_tests": ["Fasting Blood Sugar (FBS)", "2-Hour Postprandial Blood Sugar (2hrs ABF)", "HbA1c", "S. Bilirubin", "Urine Microalbumin"],
+      "image_url": "https://i.ibb.co.com/zQY7jBM/img2.jpg",
+      "price": 85.0
+   },
+   {
+      "title": "Liver Function Test (LFT)",
+      "description": "A group of blood tests that assess the liver's ability to function properly and its overall health.",
+      "included_tests": ["S. Bilirubin", "S. Alkaline Phosphatase", "S. Alanine Transaminase (ALT)", "S. Aspartate Transaminase (AST)", "S. Total Protein"],
+      "image_url": "https://i.ibb.co.com/g6M49kT/img3.jpg",
+      "price": 95.0
+   },
+   {
+      "title": "Kidney Function Test",
+      "description": "A panel of tests to evaluate kidney function and detect any potential kidney disorders.",
+      "included_tests": ["Serum Creatinine", "Blood Urea Nitrogen (BUN)", "Electrolytes (Sodium, Potassium, Chloride)", "Urine Routine", "Urine Microalbumin"],
+      "image_url": "https://i.ibb.co.com/pR6cyfd/img4.jpg",
+      "price": 60.0
+   },
+   {
+      "title": "Thyroid Function Test",
+      "description": "Tests to evaluate thyroid gland performance and diagnose thyroid-related conditions.",
+      "included_tests": ["Thyroid Stimulating Hormone (TSH)", "Free T4 (Thyroxine)", "Free T3 (Triiodothyronine)", "Anti-Thyroid Antibodies"],
+      "image_url": "https://i.ibb.co.com/KWvv9Sf/img5.jpg",
+      "price": 130.0
+   },
+   {
+      "title": "Lipid Profile",
+      "description": "A group of tests to measure the amount of cholesterol and triglycerides in your blood, assessing cardiovascular risk.",
+      "included_tests": ["Total Cholesterol", "Low-Density Lipoprotein (LDL)", "High-Density Lipoprotein (HDL)", "Triglycerides", "Very Low-Density Lipoprotein (VLDL)"],
+      "image_url": "https://i.ibb.co.com/R9hGR92/img6.jpg",
+      "price": 150.0
+   },
+   {
+      "title": "Cardiac Risk Assessment",
+      "description": "Tests designed to assess your risk of developing cardiovascular diseases.",
+      "included_tests": ["Lipid Profile", "High-Sensitivity C-Reactive Protein (hs-CRP)", "Homocysteine", "Apolipoprotein A1", "Apolipoprotein B"],
+      "image_url": "https://i.ibb.co.com/pd41Y1T/img7.jpg",
+      "price": 120.0
+   },
+   {
+      "title": "Comprehensive Health Checkup",
+      "description": "A full-body examination that includes various tests to assess overall health and detect potential health issues early.",
+      "included_tests": ["CBC with Blood Film", "Liver Function Test (LFT)", "Kidney Function Test", "Lipid Profile", "Thyroid Function Test", "Chest X-Ray", "ECG", "Ultrasound Abdomen"],
+      "image_url": "https://i.ibb.co.com/XxKXhjn/img8.jpg",
+      "price": 75.0
+   }
+]
