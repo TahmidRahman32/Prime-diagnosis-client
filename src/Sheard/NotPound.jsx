@@ -1,7 +1,8 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
-const NotPound = ({title}) => {
+const NotPound = ({ title }) => {
    return (
       <section className="flex items-center h-full ">
          <div className=" flex flex-col min-h-[calc(100vh-64px)]  items-center justify-center px-5 mx-auto my-8">

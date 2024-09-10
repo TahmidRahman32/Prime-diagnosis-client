@@ -8,16 +8,17 @@ import moment from "moment";
 const BookPackages = () => {
    const { user } = useAuth();
    const axiosSecure = useAxiosSecure();
+
    const { register, handleSubmit } = useForm();
    const onSubmit = async (data) => {
       const bookingData = {
          name: data.name,
          email: data.email,
          subject: data.subject,
-         massage: data.massage,
-         time: moment().format("LTS"),
+         doctor: data.doctor,
          date: moment().format("L"),
       };
+      console.log(bookingData);
 
       axiosSecure.post("/bookings", bookingData).then((res) => {
          console.log(res.data);
@@ -67,7 +68,7 @@ const BookPackages = () => {
                      </div>
                      <div className="col-span-full sm:col-span-3">
                         <label htmlFor="lastname" className="text-sm">
-                           Phone
+                           Phone<span className="text-xl text-red-600">*</span>
                         </label>
                         <input
                            {...register("phoneNum", { required: true })}
@@ -80,32 +81,24 @@ const BookPackages = () => {
 
                      <div className="col-span-full sm:col-span-3">
                         <label htmlFor="email" className="text-sm">
-                          Doctor
+                           Doctor<span className="text-xl text-red-600">*</span>
                         </label>
                         <select className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" {...register("doctor", { required: true })}>
                            <option value="">Select Doctor...</option>
-                           <option value="A">Option A</option>
-                           <option value="B">Option B</option>
+                           <option value="Dr. Sohel Mahmud">Dr. Sohel Mahmud</option>
+                           <option value="Dr. Sahana Zaman">Dr. Sahana Zaman</option>
+                           <option value="Dr. Md. Rowsan Masud">Dr. Md. Rowsan Masud</option>
+                           <option value="Dr. Mohammad Atikur Rahman">Dr. Mohammad Atikur Rahman</option>
+                           <option value="Dr. Porimol Kumar Das">Dr. Porimol Kumar Das</option>
                         </select>
                      </div>
-                     <div className="col-span-full sm:col-span-3">
-                        <label htmlFor="email" className="text-sm">
-                           Subject
-                        </label>
-                        <input
-                           {...register("subject", { required: true })}
-                           id="email"
-                           type="text"
-                           placeholder="Subject"
-                           className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300"
-                        />
-                     </div>
+
                      <div className="col-span-full">
                         <label htmlFor="address" className="text-sm">
-                           massage
+                           SUbject<span className="text-xl text-red-600">*</span>
                         </label>
 
-                        <input type="text" {...register("massage", { required: true })} className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" />
+                        <input type="text" {...register("subject", { required: true })} className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" />
                      </div>
                   </div>
                </fieldset>

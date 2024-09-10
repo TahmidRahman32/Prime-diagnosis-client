@@ -4,6 +4,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import useAxiosSecure from "../../Hooks/axios/useAxiosSecure";
 import NotPound from "../../Sheard/NotPound";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UserHome = () => {
    const axiosSecure = useAxiosSecure();
@@ -14,7 +15,6 @@ const UserHome = () => {
          return res.data;
       },
    });
-   // console.log(bookings);
 
    const handleDeleteBtn = (book) => {
       console.log("add", book);
@@ -29,23 +29,26 @@ const UserHome = () => {
          confirmButtonText: "Yes, delete it!",
       }).then((result) => {
          if (result.isConfirmed) {
-              axiosSecure.delete(`/bookings/${book}`).then((res) => {
-                 console.log(res.data);
-                 if (res.data.deletedCount) {
-                    refetch();
-                    Swal.fire({
-                       title: "Deleted!",
-                       text: "Your Order has been deleted.",
-                       icon: "success",
-                    });
-                 }
-              });
+            axiosSecure.delete(`/bookings/${book}`).then((res) => {
+               console.log(res.data);
+               if (res.data.deletedCount) {
+                  refetch();
+                  Swal.fire({
+                     title: "Deleted!",
+                     text: "Your Order has been deleted.",
+                     icon: "success",
+                  });
+               }
+            });
          }
       });
    };
 
    return (
       <div>
+         <Helmet>
+            <title>Dashboard || Home</title>
+         </Helmet>
          {bookings.length > 0 ? (
             <div className="max-w-screen-xl mx-auto mt-8">
                <div className="flex">
@@ -62,6 +65,7 @@ const UserHome = () => {
                            <th>email</th>
                            <th>subject</th>
                            <th> Date And Time</th>
+                           <th>Doctor</th>
                            <th>delete</th>
                         </tr>
                      </thead>
@@ -78,6 +82,7 @@ const UserHome = () => {
                               </td>
                               <th>{booking.subject}</th>
                               <th>{booking.date},</th>
+                              <th>{booking.doctor},</th>
 
                               <th>
                                  <button onClick={() => handleDeleteBtn(booking._id)} title="delete" className="bg-red-500 px-2 py-2 rounded-full">
