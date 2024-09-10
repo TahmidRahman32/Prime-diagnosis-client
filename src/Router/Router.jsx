@@ -8,6 +8,9 @@ import Details from "../Pages/Home/Details/Details";
 import BookPackages from "../Pages/BookPackages/BookPackages";
 import PrivateRouter from "./PrivateRouter";
 import OurAllPackages from "../Pages/Home/Category/OurAllPackages";
+import Dashboard from "../Pages/Admin/Dashboard/Dashboard";
+import AllUsers from "../Pages/Admin/Dashboard/AllUsers";
+import UserHome from "../Pages/UserDashboard/UserHome";
 
 const router = createBrowserRouter([
    {
@@ -47,21 +50,51 @@ const router = createBrowserRouter([
                </PrivateRouter>
             ),
          },
-        
+
          {
-            path: '/ourPackage',
+            path: "/ourPackage",
             element: <OurAllPackages />,
          },
-        
+
          // {
          //    path: '/',
          //    element: <Home />,
          // },
-        
+
          // {
          //    path: '/',
          //    element: <Home />,
          // },
+      ],
+   },
+   {
+      path: "dashboard",
+      element: (
+         <PrivateRouter>
+            <Dashboard />
+         </PrivateRouter>
+      ),
+      children: [
+         {
+            path: "home",
+            element: <UserHome />,
+         },
+         // {
+         //    path: "item",
+         //    element: <UserItem />,
+         // },
+         // {
+         //    path: "manageItems",
+         //    element: <ManageItems />,
+         // },
+         // {
+         //    path: "manageBookings",
+         //    element: <ManageBookings />,
+         // },
+         {
+            path: "users",
+            element: <AllUsers />,
+         },
       ],
    },
 ]);
