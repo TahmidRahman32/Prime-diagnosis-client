@@ -105,7 +105,7 @@ const SiteBar = () => {
                            <li className="rounded-sm">
                               <NavLink to={"/dashboard/item"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <MdDateRange size={20} color="#050227 " />
-                                 <span className="uppercase">reservation</span>
+                                 <span className="uppercase">Reservation</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
@@ -118,28 +118,25 @@ const SiteBar = () => {
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink
-                                 to={"/dashboard/manageBookings"}
-                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
-                              >
+                              <NavLink to={"/dashboard/myCart"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoMdCart size={20} />
                                  <span className="uppercase">my cart</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm  ">
-                              <NavLink to={"/dashboard/wishlist"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                              <NavLink to={"/dashboard/addReview"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <PiToolboxFill size={20} />
                                  <span className="uppercase">add review</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md">
+                              <NavLink to={"/dashboard/settings"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoSettings size={20} color="#050227 " />
                                  <span className="uppercase">Settings</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md">
+                              <NavLink to={"/dashboard/logout"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <RiLogoutBoxFill size={20} color="#050227 " />
                                  <span className="uppercase">Logout</span>
                               </NavLink>

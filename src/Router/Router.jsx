@@ -11,6 +11,11 @@ import OurAllPackages from "../Pages/Home/Category/OurAllPackages";
 import Dashboard from "../Pages/Admin/Dashboard/Dashboard";
 import AllUsers from "../Pages/Admin/Dashboard/AllUsers";
 import UserHome from "../Pages/UserDashboard/UserHome";
+import Reservation from "../Pages/UserDashboard/Reservation";
+import MyCart from "../Pages/UserDashboard/MyCart";
+import AddReview from "../Pages/UserDashboard/AddReview";
+import Settings from "../Pages/UserDashboard/Settings";
+import Logout from "../Pages/UserDashboard/Logout";
 
 const router = createBrowserRouter([
    {
@@ -79,18 +84,26 @@ const router = createBrowserRouter([
             path: "home",
             element: <UserHome />,
          },
-         // {
-         //    path: "item",
-         //    element: <UserItem />,
-         // },
-         // {
-         //    path: "manageItems",
-         //    element: <ManageItems />,
-         // },
-         // {
-         //    path: "manageBookings",
-         //    element: <ManageBookings />,
-         // },
+         {
+            path: "item",
+            element: <Reservation />,
+         },
+         {
+            path: "myCart",
+            element: <MyCart />,
+         },
+         {
+            path: "addReview",
+            element: <AddReview />,
+         },
+         {
+            path: "settings",
+            element: <Settings />,
+         },
+         {
+            path: "logout",
+            element: <Logout />,
+         },
          {
             path: "users",
             element: <AllUsers />,

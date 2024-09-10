@@ -80,6 +80,16 @@ const BookPackages = () => {
 
                      <div className="col-span-full sm:col-span-3">
                         <label htmlFor="email" className="text-sm">
+                          Doctor
+                        </label>
+                        <select className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" {...register("doctor", { required: true })}>
+                           <option value="">Select Doctor...</option>
+                           <option value="A">Option A</option>
+                           <option value="B">Option B</option>
+                        </select>
+                     </div>
+                     <div className="col-span-full sm:col-span-3">
+                        <label htmlFor="email" className="text-sm">
                            Subject
                         </label>
                         <input
