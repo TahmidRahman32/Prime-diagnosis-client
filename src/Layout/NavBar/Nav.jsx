@@ -7,6 +7,8 @@ import useAdmin from "../../Hooks/Admin/useAdmin";
 const Nav = () => {
    const { user, logOut } = useAuth();
     const [isAdmin] = useAdmin();
+   
+    
    const handleLogOut = () => {
       Swal.fire({
          title: "Are you sure?",
@@ -36,9 +38,9 @@ const Nav = () => {
          <NavLink to={"/"} className={({ isActive }) => (isActive ? "font-bold text-blue-600 text-lg font-pansy border-b-2 border-blue-600" : "text-lg font-bold font-pansy")}>
             Home
          </NavLink>
-         <NavLink to={"/booking"} className={({ isActive }) => (isActive ? "font-bold text-blue-600 text-lg font-pansy border-b-2 border-blue-600" : "text-lg font-bold font-pansy")}>
+         {/* <NavLink to={"/booking"} className={({ isActive }) => (isActive ? "font-bold text-blue-600 text-lg font-pansy border-b-2 border-blue-600" : "text-lg font-bold font-pansy")}>
             Booking
-         </NavLink>
+         </NavLink> */}
          {isAdmin ? (
             <NavLink to={"/dashboard"} className={({ isActive }) => (isActive ? "font-bold text-blue-600 text-lg font-pansy border-b-2 border-blue-600" : "text-lg font-bold font-pansy")}>
                Dashboard

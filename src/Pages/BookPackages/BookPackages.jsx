@@ -5,20 +5,26 @@ import useAxiosSecure from "../../Hooks/axios/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import moment from "moment";
+import { useLoaderData } from "react-router-dom";
+
 const BookPackages = () => {
    const { user } = useAuth();
+   const bookings = useLoaderData();
+   const { title, price ,_id } = bookings;
+
    const axiosSecure = useAxiosSecure();
 
    const { register, handleSubmit } = useForm();
    const onSubmit = async (data) => {
       const bookingData = {
+         bookingId: _id,
          name: data.name,
          email: data.email,
          subject: data.subject,
          doctor: data.doctor,
+         price: price,
          date: moment().format("L"),
       };
-      console.log(bookingData);
 
       axiosSecure.post("/bookings", bookingData).then((res) => {
          console.log(res.data);
@@ -26,7 +32,7 @@ const BookPackages = () => {
             Swal.fire({
                position: "center",
                icon: "success",
-               title: "Your work has been saved",
+               title: "Your Appointment Successfully Done",
                showConfirmButton: false,
                timer: 1500,
             });
@@ -85,10 +91,10 @@ const BookPackages = () => {
                         </label>
                         <select className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" {...register("doctor", { required: true })}>
                            <option value="">Select Doctor...</option>
-                           <option value="Dr. Sohel Mahmud">Dr. Sohel Mahmud</option>
-                           <option value="Dr. Sahana Zaman">Dr. Sahana Zaman</option>
-                           <option value="Dr. Md. Rowsan Masud">Dr. Md. Rowsan Masud</option>
-                           <option value="Dr. Mohammad Atikur Rahman">Dr. Mohammad Atikur Rahman</option>
+                           <option value="Dr.Sohel Mahmud">Dr. Sohel Mahmud</option>
+                           <option value="Dr.Sahana Zaman">Dr. Sahana Zaman</option>
+                           <option value="Dr.Md.Rowsan Masud">Dr. Md. Rowsan Masud</option>
+                           <option value="Dr.Mohammad Atikur Rahman">Dr. Mohammad Atikur Rahman</option>
                            <option value="Dr. Porimol Kumar Das">Dr. Porimol Kumar Das</option>
                         </select>
                      </div>
@@ -98,7 +104,12 @@ const BookPackages = () => {
                            SUbject<span className="text-xl text-red-600">*</span>
                         </label>
 
-                        <input type="text" {...register("subject", { required: true })} className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" />
+                        <input
+                           type="text"
+                           {...register("subject", { required: true })}
+                           defaultValue={title}
+                           className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300"
+                        />
                      </div>
                   </div>
                </fieldset>

@@ -27,7 +27,6 @@ const LogIn = () => {
          .then((result) => {
             const loggedUser = result.user;
             if (loggedUser) {
-               reset();
                toast("login successfully");
                navigate(location?.state ? location?.state : "/login");
                navigate("/");
@@ -42,7 +41,7 @@ const LogIn = () => {
          .then((result) => {
             const email = result.user.email;
             const user = { email };
-           axiosPublic.post("/users", user,).then((res) => {
+            axiosPublic.post("/users", user).then((res) => {
                // console.log(res.data);
                if (res.data.success) {
                   navigate(location?.state ? location?.state : "/login");
@@ -133,8 +132,8 @@ const LogIn = () => {
                                  <FaFacebookSquare size={24} color="#1579F0" />
                               </button>
                            </div>
-                           <div  className="w-full md:w-1/3 px-3 pt-4 mx-2">
-                           <GoogleLog></GoogleLog>
+                           <div className="w-full md:w-1/3 px-3 pt-4 mx-2">
+                              <GoogleLog></GoogleLog>
                               {/* <button className="appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-web-color rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none">
                                  <FcGoogle size={24} />
                               </button> */}

@@ -15,8 +15,6 @@ import useAuth from "../../Hooks/useAuth";
 const SiteBar = () => {
    const { user } = useAuth();
    const [isAdmin] = useAdmin();
-   // const isAdmin = true;
-
    return (
       <div>
          <div className="flex flex-col h-screen p-3 w-60 bg-[#02afe5] text-gray-100">
@@ -46,17 +44,12 @@ const SiteBar = () => {
                      {isAdmin ? (
                         <>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                              <NavLink to={"/dashboard/adminHome"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoHome size={20} color="#050227 " />
-                                 <span className="uppercase">Home</span>
+                                 <span className="uppercase">Admin Home</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink to={"/dashboard/item"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <ImSpoonKnife size={20} color="#050227 " />
-                                 <span className="uppercase">Add items</span>
-                              </NavLink>
-                           </li>
+
                            <li className="rounded-sm">
                               <NavLink
                                  to={"/dashboard/manageItems"}
@@ -75,6 +68,12 @@ const SiteBar = () => {
                                  <span className="uppercase">Manage bookings</span>
                               </NavLink>
                            </li>
+                           <li className="rounded-sm">
+                              <NavLink to={"/dashboard/paymentHistory"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                                 <MdPayments size={20} />
+                                 <span className="uppercase">payment history</span>
+                              </NavLink>
+                           </li>
                            <li className="rounded-sm  ">
                               <NavLink to={"/dashboard/users"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoIosPeople size={20} />
@@ -82,13 +81,13 @@ const SiteBar = () => {
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md">
+                              <NavLink to={"/dashboard/settings"} className="flex items-center p-2 space-x-3 rounded-md">
                                  <IoSettings size={20} color="#050227 " />
                                  <span className="uppercase">Settings</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md">
+                              <NavLink to={"/dashboard/Logout"} className="flex items-center p-2 space-x-3 rounded-md">
                                  <RiLogoutBoxFill size={20} color="#050227 " />
                                  <span className="uppercase">Logout</span>
                               </NavLink>
@@ -108,15 +107,7 @@ const SiteBar = () => {
                                  <span className="uppercase">Reservation</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink
-                                 to={"/dashboard/manageItems"}
-                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
-                              >
-                                 <MdPayments size={20} />
-                                 <span className="uppercase">payment history</span>
-                              </NavLink>
-                           </li>
+
                            <li className="rounded-sm">
                               <NavLink to={"/dashboard/myCart"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoMdCart size={20} />

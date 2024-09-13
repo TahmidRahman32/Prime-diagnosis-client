@@ -16,6 +16,12 @@ import MyCart from "../Pages/UserDashboard/MyCart";
 import AddReview from "../Pages/UserDashboard/AddReview";
 import Settings from "../Pages/UserDashboard/Settings";
 import Logout from "../Pages/UserDashboard/Logout";
+import Payment from "../Pages/Admin/Dashboard/Payment";
+import AdminRouter from "./AdminRouter";
+import ManageItems from "../Pages/Admin/Dashboard/ManageItems";
+import HomeAdmin from "../Pages/Admin/Dashboard/HomeAdmin";
+import ManageBookings from "../Pages/Admin/Dashboard/ManageBookings";
+import Doctors from "../Pages/Home/Doctors/Doctors";
 
 const router = createBrowserRouter([
    {
@@ -48,12 +54,13 @@ const router = createBrowserRouter([
             loader: ({ params }) => fetch(`http://localhost:8000/service/${params.id}`),
          },
          {
-            path: "/booking",
+            path: "/booking/:id",
             element: (
                <PrivateRouter>
                   <BookPackages />
                </PrivateRouter>
             ),
+            loader: ({ params }) => fetch(`http://localhost:8000/service/${params.id}`),
          },
 
          {
@@ -61,10 +68,10 @@ const router = createBrowserRouter([
             element: <OurAllPackages />,
          },
 
-         // {
-         //    path: '/',
-         //    element: <Home />,
-         // },
+         {
+            path: "/doctors",
+            element: <Doctors />,
+         },
 
          // {
          //    path: '/',
@@ -93,6 +100,10 @@ const router = createBrowserRouter([
             element: <MyCart />,
          },
          {
+            path: "payment",
+            element: <Payment />,
+         },
+         {
             path: "addReview",
             element: <AddReview />,
          },
@@ -104,10 +115,41 @@ const router = createBrowserRouter([
             path: "logout",
             element: <Logout />,
          },
+
+         // admin router
          {
             path: "users",
-            element: <AllUsers />,
+            element: (
+               <AdminRouter>
+                  <AllUsers />
+               </AdminRouter>
+            ),
          },
+         {
+            path: "adminHome",
+            element: <HomeAdmin />,
+         },
+         {
+            path: "manageItems",
+            element: <ManageItems />,
+         },
+
+         {
+            path: "manageBookings",
+            element: <ManageBookings />,
+         },
+         // {
+         //    path: "",
+         //    element: <AllUsers />,
+         // },
+         // {
+         //    path: "",
+         //    element: <AllUsers />,
+         // },
+         // {
+         //    path: "",
+         //    element: <AllUsers />,
+         // },
       ],
    },
 ]);

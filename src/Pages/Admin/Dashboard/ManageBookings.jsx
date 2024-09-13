@@ -1,16 +1,16 @@
 import React from "react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import useAxiosSecure from "../../Hooks/axios/useAxiosSecure";
-import NotPound from "../../Sheard/NotPound";
+
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import UseBookingData from "../../Hooks/BookingData/UseBookingData";
 
-const UserHome = () => {
-   const [bookings, refetch] = UseBookingData();
-   const axiosSecure = useAxiosSecure();
-   const totalPrice = bookings.reduce((total, item) => total + item.price, 0);
+import NotPound from "../../../Sheard/NotPound";
+import UseBookingData from "../../../Hooks/BookingData/UseBookingData";
+
+const ManageBookings = () => {
+   const [bookings] = UseBookingData();
+
    const handleDeleteBtn = (book) => {
       Swal.fire({
          title: "Are you sure?",
@@ -36,11 +36,10 @@ const UserHome = () => {
          }
       });
    };
-
    return (
       <div>
          <Helmet>
-            <title> Home</title>
+            <title> manageBookings</title>
          </Helmet>
          {bookings.length > 0 ? (
             <div className="max-w-screen-xl mx-auto mt-8">
@@ -48,13 +47,8 @@ const UserHome = () => {
                   <h2 className="text-3xl uppercase font-bold">Your Booking List: {bookings.length}</h2>
                   <div className="flex gap-5">
                      <h2 className="text-3xl uppercase font-bold">
-                        total Price: $<span className="text-green-600">{totalPrice}</span>
+                        Visit Price: $<span className="text-green-600"></span>
                      </h2>
-                     <Link to={"/dashboard/payment"}>
-                        <button className="relative rounded-xl flex h-[40px] px-4 items-center justify-center overflow-hidden bg-gradient-to-r from-[#1E2761] to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-cyan-400 hover:before:h-56 hover:before:w-56">
-                           <span className="relative z-10 font-pansy font-bold">Pay</span>
-                        </button>
-                     </Link>
                   </div>
                </div>
                <div className="overflow-x-auto mt-8 ">
@@ -69,8 +63,7 @@ const UserHome = () => {
                            <th>subject</th>
                            <th> Date And Time</th>
                            <th>Doctor</th>
-                           <th>Price</th>
-
+                           <th>pay</th>
                            <th>delete</th>
                         </tr>
                      </thead>
@@ -88,7 +81,14 @@ const UserHome = () => {
                               <th>{booking.subject}</th>
                               <th>{booking.date}</th>
                               <th>{booking.doctor}</th>
-                              <th>${booking.price}</th>
+                              <th>
+                                 {" "}
+                                 <Link to={"/dashboard/payment"}>
+                                    <button className="relative rounded-xl flex h-[40px] px-4 items-center justify-center overflow-hidden bg-gradient-to-r from-[#1E2761] to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-cyan-400 hover:before:h-56 hover:before:w-56">
+                                       <span className="relative z-10 font-pansy font-bold">Pay</span>
+                                    </button>
+                                 </Link>
+                              </th>
 
                               <th>
                                  <button onClick={() => handleDeleteBtn(booking._id)} title="delete" className="bg-red-500 px-2 py-2 rounded-full">
@@ -108,4 +108,4 @@ const UserHome = () => {
    );
 };
 
-export default UserHome;
+export default ManageBookings;

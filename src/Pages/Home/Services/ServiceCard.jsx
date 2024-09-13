@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
    const { description, image_url, title, price, _id } = service;
-
+     
    return (
       <div className="card bg-base-100 w-96 shadow-xl">
          <figure>

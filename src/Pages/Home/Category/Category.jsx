@@ -7,9 +7,11 @@ const Category = () => {
          <div className="bg-sky-700 text-center text-white py-8 space-y-1 rounded-lg">
             <h5 className="font-pansy">Looking for doctors?</h5>
             <h2 className=" text-2xl font-bold">Find here</h2>
-            <button className="relative mx-auto rounded-xl flex h-[40px] px-4 items-center justify-center overflow-hidden bg-gradient-to-r from-[#1E2761] to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-cyan-400 hover:before:h-56 hover:before:w-56">
-               <span className="relative z-10 font-pansy font-bold">Find A Doctor</span>
-            </button>
+            <Link to={'/doctors'}>
+               <button className="relative mx-auto rounded-xl flex h-[40px] px-4 items-center justify-center overflow-hidden bg-gradient-to-r from-[#1E2761] to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-cyan-400 hover:before:h-56 hover:before:w-56">
+                  <span className="relative z-10 font-pansy font-bold">Find A Doctor</span>
+               </button>
+            </Link>
          </div>
          <div className="bg-[#1995ad] text-center text-white py-8 space-y-1 rounded-lg">
             <h5 className="font-pansy">When to come in?</h5>

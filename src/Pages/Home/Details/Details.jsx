@@ -7,6 +7,10 @@ const Details = () => {
 
    const { description, image_url, title, price, _id, included_tests } = detailsData;
 
+   
+
+   
+
    return (
       <div>
          <Helmet>
@@ -54,7 +58,7 @@ const Details = () => {
                <div className="border-2 border-[#43b27f33] bg-[#43b27f33] rounded-lg w-48 px-2  text-center pt-2 font-bold text-xl font-pansy">Price: ${price}</div>
 
                <div className="flex flex-col">
-                  <Link to={"/booking"}>
+                  <Link to={`/booking/${_id}`}>
                      <button className="relative flex h-[50px] w-48 rounded-lg items-center justify-center overflow-hidden bg-gradient-to-r from-sky-800 to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-[#43b27f] hover:before:h-56 hover:before:w-56">
                         <span className="relative z-10 font-pansy text-xl ">Book Packages</span>
                      </button>
