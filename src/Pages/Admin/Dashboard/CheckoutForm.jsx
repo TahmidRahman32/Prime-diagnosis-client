@@ -5,6 +5,7 @@ import UseBookingData from "../../../Hooks/BookingData/UseBookingData";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
    const [error, setError] = useState("");
@@ -12,15 +13,18 @@ const CheckoutForm = () => {
    const { user } = useAuth();
    const stripe = useStripe();
    const elements = useElements();
+   const navigate = useNavigate();
    const axiosSecure = useAxiosSecure();
    const [bookings] = UseBookingData();
    const totalPrice = bookings.reduce((total, item) => total + item.price, 0);
 
    useEffect(() => {
-      axiosSecure.post("/create-payment-intent", { price: totalPrice }).then((res) => {
-         console.log(res.data.clientSecret);
-         setClientSecret(res.data.clientSecret);
-      });
+      if (totalPrice > 0) {
+         axiosSecure.post("/create-payment-intent", { price: totalPrice }).then((res) => {
+            console.log(res.data.clientSecret);
+            setClientSecret(res.data.clientSecret);
+         });
+      }
    }, []);
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -72,12 +76,13 @@ const CheckoutForm = () => {
                price: totalPrice,
                date: moment().format("L"),
                transactionId: paymentIntent.id,
-               paymentId: bookings.map((item) => item.bookingId),
-               bookingId: bookings.map((item) => item._id),
+               bookingId: bookings.map((item) => item.bookingId),
+               paymentId: bookings.map((item) => item._id),
                status: "pending",
             };
             const res = await axiosSecure.post("/payment", payment);
             console.log(res.data, "payment save");
+            navigate("/dashboard/paymentHistory");
          }
       }
    };

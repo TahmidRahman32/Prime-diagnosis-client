@@ -23,6 +23,7 @@ import HomeAdmin from "../Pages/Admin/Dashboard/HomeAdmin";
 import ManageBookings from "../Pages/Admin/Dashboard/ManageBookings";
 import Doctors from "../Pages/Home/Doctors/Doctors";
 import PaymentHistory from "../Pages/Admin/Dashboard/PaymentHistory";
+import Profile from "../Pages/UserDashboard/Profile";
 
 const router = createBrowserRouter([
    {
@@ -73,11 +74,6 @@ const router = createBrowserRouter([
             path: "/doctors",
             element: <Doctors />,
          },
-
-         // {
-         //    path: '/',
-         //    element: <Home />,
-         // },
       ],
    },
    {
@@ -116,6 +112,14 @@ const router = createBrowserRouter([
             path: "logout",
             element: <Logout />,
          },
+         {
+            path: "paymentHistory",
+            element: <PaymentHistory />,
+         },
+         {
+            path: "profile",
+            element: <Profile/>,
+         },
 
          // admin router
          {
@@ -128,21 +132,30 @@ const router = createBrowserRouter([
          },
          {
             path: "adminHome",
-            element: <HomeAdmin />,
+            element: (
+               <AdminRouter>
+                  <HomeAdmin />
+               </AdminRouter>
+            ),
          },
          {
             path: "manageItems",
-            element: <ManageItems />,
+            element: (
+               <AdminRouter>
+                  <ManageItems />
+               </AdminRouter>
+            ),
          },
 
          {
             path: "manageBookings",
-            element: <ManageBookings />,
+            element: (
+               <AdminRouter>
+                  <ManageBookings />
+               </AdminRouter>
+            ),
          },
-         {
-            path: "paymentHistory",
-            element: <PaymentHistory />,
-         },
+
          // {
          //    path: "",
          //    element: <AllUsers />,

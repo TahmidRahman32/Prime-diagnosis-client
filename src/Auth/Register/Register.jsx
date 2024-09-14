@@ -42,21 +42,22 @@ const Register = () => {
          image: res.data.data.display_url,
          blood: data.blood,
       };
+      console.log(usersInformation);
 
-      createUser(data.email, data.password)
-         .then((result) => {
-            console.log(result.user);
-            axiosPublic.post("/users", usersInformation).then((res) => {
-               console.log(res.data);
-            });
+      // createUser(data.email, data.password)
+      //    .then((result) => {
+      //       console.log(result.user);
+      //       axiosPublic.post("/users", usersInformation).then((res) => {
+      //          console.log(res.data);
+      //       });
 
-            updateProfile(result.user, {
-               displayName: data.name,
-               photoURL: res.data.data.display_url,
-            });
-            navigate("/");
-         })
-         .catch(() => {});
+      //       updateProfile(result.user, {
+      //          displayName: data.name,
+      //          photoURL: res.data.data.display_url,
+      //       });
+      //       navigate("/");
+      //    })
+      //    .catch(() => {});
    };
 
    useEffect(() => {
@@ -88,7 +89,7 @@ const Register = () => {
          <Helmet>
             <title>Register</title>
          </Helmet>
-      
+
          <div>
             <Helmet>
                <title> Register</title>
@@ -156,21 +157,17 @@ const Register = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                        <span className="label-text text-white">blood group</span>
                                     </label>
-                                    <select
-                                       {...register("blood", { required: true })}
-                                       className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                       required
-                                       name="blood"
-                                    >
-                                       <option value="default">Blood roup Select...</option>
+
+                                    <select className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" {...register("blood", { required: true })}>
+                                       <option value="">Select Blood...</option>
                                        <option value="A+">A+</option>
                                        <option value="A-">A-</option>
-                                       <option value="A-">B+</option>
-                                       <option value="A-">B-</option>
-                                       <option value="A-">AB+</option>
-                                       <option value="A-">AB-</option>
-                                       <option value="A-">O+</option>
-                                       <option value="A-">O-</option>
+                                       <option value="O+">O+</option>
+                                       <option value="O-">O-</option>
+                                       <option value="AB-">AB-</option>
+                                       <option value="AB+">AB+</option>
+                                       <option value="B+">B+</option>
+                                       <option value="B-">B-</option>
                                     </select>
                                  </div>
                                  <div className="my-2">

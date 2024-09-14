@@ -11,6 +11,7 @@ import { RiLogoutBoxFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import useAdmin from "../../Hooks/Admin/useAdmin";
 import useAuth from "../../Hooks/useAuth";
+import { CgProfile } from "react-icons/cg";
 
 const SiteBar = () => {
    const { user } = useAuth();
@@ -68,12 +69,7 @@ const SiteBar = () => {
                                  <span className="uppercase">Manage bookings</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink to={"/dashboard/paymentHistory"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <MdPayments size={20} />
-                                 <span className="uppercase">payment history</span>
-                              </NavLink>
-                           </li>
+
                            <li className="rounded-sm  ">
                               <NavLink to={"/dashboard/users"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoIosPeople size={20} />
@@ -102,12 +98,26 @@ const SiteBar = () => {
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
+                              <NavLink to={"/dashboard/profile"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                                 <CgProfile size={20} color="#050227 " />
+                                 <span className="uppercase">Profile</span>
+                              </NavLink>
+                           </li>
+                           <li className="rounded-sm">
                               <NavLink to={"/dashboard/item"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <MdDateRange size={20} color="#050227 " />
                                  <span className="uppercase">Reservation</span>
                               </NavLink>
                            </li>
-
+                           <li className="rounded-sm">
+                              <NavLink
+                                 to={"/dashboard/paymentHistory"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <MdPayments size={20} />
+                                 <span className="uppercase">payment history</span>
+                              </NavLink>
+                           </li>
                            <li className="rounded-sm">
                               <NavLink to={"/dashboard/myCart"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <IoMdCart size={20} />
