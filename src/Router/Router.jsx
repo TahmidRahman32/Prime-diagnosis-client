@@ -22,6 +22,7 @@ import ManageItems from "../Pages/Admin/Dashboard/ManageItems";
 import HomeAdmin from "../Pages/Admin/Dashboard/HomeAdmin";
 import ManageBookings from "../Pages/Admin/Dashboard/ManageBookings";
 import Doctors from "../Pages/Home/Doctors/Doctors";
+import PaymentHistory from "../Pages/Admin/Dashboard/PaymentHistory";
 
 const router = createBrowserRouter([
    {
@@ -138,10 +139,10 @@ const router = createBrowserRouter([
             path: "manageBookings",
             element: <ManageBookings />,
          },
-         // {
-         //    path: "",
-         //    element: <AllUsers />,
-         // },
+         {
+            path: "paymentHistory",
+            element: <PaymentHistory />,
+         },
          // {
          //    path: "",
          //    element: <AllUsers />,
