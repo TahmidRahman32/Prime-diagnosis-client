@@ -22,8 +22,8 @@ const Nav = () => {
          if (result.isConfirmed) {
             logOut()
                .then(() => {})
-               .catch((err) => {
-                  console.log(err);
+               .catch(() => {
+                  // console.log(err);
                });
             Swal.fire({
                title: "LogOut ",

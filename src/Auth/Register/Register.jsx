@@ -27,7 +27,7 @@ const Register = () => {
    // console.log(country);
    const { register, handleSubmit } = useForm();
    const onSubmit = async (data) => {
-      console.log(data);
+     
       const imgFile = { image: data.image[0] };
 
       const res = await axiosPublic.post(img_api, imgFile, {
@@ -42,22 +42,22 @@ const Register = () => {
          image: res.data.data.display_url,
          blood: data.blood,
       };
-      console.log(usersInformation);
+    
 
-      // createUser(data.email, data.password)
-      //    .then((result) => {
-      //       console.log(result.user);
-      //       axiosPublic.post("/users", usersInformation).then((res) => {
-      //          console.log(res.data);
-      //       });
+      createUser(data.email, data.password)
+         .then((result) => {
+            console.log(result.user);
+            axiosPublic.post("/users", usersInformation).then((res) => {
+               console.log(res.data);
+            });
 
-      //       updateProfile(result.user, {
-      //          displayName: data.name,
-      //          photoURL: res.data.data.display_url,
-      //       });
-      //       navigate("/");
-      //    })
-      //    .catch(() => {});
+            updateProfile(result.user, {
+               displayName: data.name,
+               photoURL: res.data.data.display_url,
+            });
+            navigate("/");
+         })
+         .catch(() => {});
    };
 
    useEffect(() => {
@@ -72,17 +72,6 @@ const Register = () => {
    useEffect(() => {
       cityData && setCity(cityData[0]);
    }, [cityData]);
-
-   //    if (password.length < 6) {
-   //       toast.error("Password must be 6 Character");
-   //       return;
-   //    } else if (!/[A-Z]/.test(password)) {
-   //       toast.error("Please Add Minimum one Uppercase");
-   //       return;
-   //    } else if (!/[a-z]/.test(password)) {
-   //       toast.error("Please Add Minimum one lowercase");
-   //       return;
-   //    }
 
    return (
       <div>

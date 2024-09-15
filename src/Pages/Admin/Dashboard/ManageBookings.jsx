@@ -23,7 +23,7 @@ const ManageBookings = () => {
       }).then((result) => {
          if (result.isConfirmed) {
             axiosSecure.delete(`/bookings/${book}`).then((res) => {
-               console.log(res.data);
+               // console.log(res.data);
                if (res.data.deletedCount) {
                   refetch();
                   Swal.fire({
