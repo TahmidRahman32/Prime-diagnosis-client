@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import ServiceCard from '../Services/ServiceCard';
-import Headers from '../../../Sheard/Headers/Headers';
+import React, { useEffect, useState } from "react";
+import ServiceCard from "../Services/ServiceCard";
+import Headers from "../../../Sheard/Headers/Headers";
 
 const OurAllPackages = () => {
    const [services, setService] = useState([]);
    useEffect(() => {
-      fetch("http://localhost:8000/service")
+      fetch("https://assignment-12-server-alpha-eight.vercel.app/service")
          .then((res) => res.json())
          .then((data) => {
             setService(data);

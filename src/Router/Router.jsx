@@ -53,7 +53,7 @@ const router = createBrowserRouter([
                   <Details />
                </PrivateRouter>
             ),
-            loader: ({ params }) => fetch(`http://localhost:8000/service/${params.id}`),
+            loader: ({ params }) => fetch(`https://assignment-12-server-alpha-eight.vercel.app/service/${params.id}`),
          },
          {
             path: "/booking/:id",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
                   <BookPackages />
                </PrivateRouter>
             ),
-            loader: ({ params }) => fetch(`http://localhost:8000/service/${params.id}`),
+            loader: ({ params }) => fetch(`https://assignment-12-server-alpha-eight.vercel.app/service/${params.id}`),
          },
 
          {
@@ -118,7 +118,7 @@ const router = createBrowserRouter([
          },
          {
             path: "profile",
-            element: <Profile/>,
+            element: <Profile />,
          },
 
          // admin router

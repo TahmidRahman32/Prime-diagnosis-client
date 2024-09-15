@@ -202,7 +202,12 @@ const Register = () => {
                                     <input
                                        type={showPass ? "text" : "password"}
                                        name="password"
-                                       {...register("password", { required: true })}
+                                       {...register("password", {
+                                          required: true,
+                                          minLength: 6,
+                                          maxLength: 20,
+                                          pattern: /(?=.*[A-Z])(?=.*[a-z])/,
+                                       })}
                                        placeholder="Password"
                                        className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                        required
