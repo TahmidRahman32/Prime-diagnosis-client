@@ -14,15 +14,16 @@ import slider1 from "../../../assets/slider/slider-1.png";
 // import slider3 from "../../../assets/slider/slider-3.png";
 import BannerImg from "./BannerImg";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./../../../Hooks/axios/useAxiosPublic";
 const Banner = () => {
+   const axiosPublic = useAxiosPublic();
    const { data: bannerData = [] } = useQuery({
       queryKey: ["bannerData"],
-      queryFn: async() => {
-         const res = await fetch("http://localhost:8000/offers").then((resp) => resp.json());
-         return res;
+      queryFn: async () => {
+         const res = await axiosPublic.get("/offers");
+         return res.data;
       },
    });
-console.log(bannerData);
 
    return (
       <div className="mt-16 md:my-0">
