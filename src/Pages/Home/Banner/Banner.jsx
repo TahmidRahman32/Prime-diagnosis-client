@@ -17,12 +17,13 @@ import { useQuery } from "@tanstack/react-query";
 const Banner = () => {
    const { data: bannerData = [] } = useQuery({
       queryKey: ["bannerData"],
-      queryFn: () => {
-         const res = fetch("banner.json").then((resp) => resp.json());
+      queryFn: async() => {
+         const res = await fetch("http://localhost:8000/offers").then((resp) => resp.json());
          return res;
       },
    });
-   
+console.log(bannerData);
+
    return (
       <div className="mt-16 md:my-0">
          <Swiper navigation={true} modules={[Navigation, Autoplay]} autoplay className="mySwiper">

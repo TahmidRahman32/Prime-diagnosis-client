@@ -11,15 +11,17 @@ import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import GoogleLog from "../../Sheard/Headers/GoogleLog/GoogleLog";
 import useAxiosPublic from "../../Hooks/axios/useAxiosPublic";
+import { ImSpinner9 } from "react-icons/im";
 const LogIn = () => {
    const [showPass, setShowPass] = useState(false);
-   const { googleLogin, gitHubLogin, login } = useAuth();
+   const { googleLogin, gitHubLogin, login, loading, setLoading } = useAuth();
    const location = useLocation();
    const navigate = useNavigate();
    const axiosPublic = useAxiosPublic();
 
    const loginHandleBtn = (e) => {
       e.preventDefault();
+      setLoading(true)
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
@@ -30,13 +32,16 @@ const LogIn = () => {
                toast("login successfully");
                navigate(location?.state ? location?.state : "/login");
                navigate("/");
+               setLoading(false)
             }
          })
          .catch((error) => {
             console.log(error);
+            setLoading(false);
          });
    };
    const handleGoogleLogin = () => {
+      setLoading(true);
       googleLogin()
          .then((result) => {
             const email = result.user.email;
@@ -47,22 +52,27 @@ const LogIn = () => {
                   navigate(location?.state ? location?.state : "/login");
                }
             });
-            // navigate(location?.state ? location?.state : "/login");
+            // navigate(location?.state ? location?.state : "/login");\
+            setLoading(false);
          })
          .catch((error) => {
             console.log(error);
+            setLoading(false);
          });
    };
    const handleGitHubBtn = () => {
+      setLoading(true);
       gitHubLogin()
          .then((result) => {
             const loggedUser = result.user;
             if (loggedUser) {
                toast("login successfully");
             }
+            setLoading(false)
          })
          .catch((error) => {
             console.log(error);
+            setLoading(false);
          });
    };
    return (
@@ -115,8 +125,17 @@ const LogIn = () => {
                            </div>
 
                            <div className="text-center md:w-full px-3 mb-6">
-                              <button className="relative flex md:w-full h-[50px] w-96  mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg">
-                                 <span className="relative z-10 font-pansy text-xl">LogIn</span>
+                              <button
+                                 disabled={loading}
+                                 className="relative flex md:w-full h-[50px] w-96  mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg"
+                              >
+                                 {loading ? (
+                                    <span className="relative z-10 font-pansy text-xl animate-spin mx-auto">
+                                       <ImSpinner9 />
+                                    </span>
+                                 ) : (
+                                    <span className="relative z-10 font-pansy text-xl">LogIn</span>
+                                 )}
                               </button>
                            </div>
                         </form>
@@ -139,7 +158,7 @@ const LogIn = () => {
                               </button> */}
                            </div>
                            <div onClick={handleGitHubBtn} className="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
-                              <button className="appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-web-color rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none">
+                              <button disabled={loading} className="appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-web-color rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none">
                                  <FaGithub size={24} />
                               </button>
                            </div>

@@ -1,5 +1,4 @@
 const BannerImg = ({ banner }) => {
-   console.log(banner);
    const { coupon_code, discount_rate, status, text, title } = banner;
 
    return (
@@ -25,7 +24,7 @@ const BannerImg = ({ banner }) => {
                   <div className="bg-black rotate-45 h-24 w-24 mt-5 rounded-lg shadow-md border-2 border-[#E5D19F]"></div>
                   <div className="absolute top-10 left-3 right-4">
                      <h4 className="font-pansy text-sm text-center text-white px-4 py-2 ">Discount</h4>
-                     <h2 className="text-5xl font-bold font-super text-white text-center">10%</h2>
+                     <h2 className="text-5xl font-bold font-super text-white text-center">{discount_rate}</h2>
                   </div>
                </div>
             </div>

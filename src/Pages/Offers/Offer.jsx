@@ -1,13 +1,18 @@
 import React from "react";
 
+
 const Offer = ({ offer }) => {
    const { image, text, coupon_code, discount_rate, title } = offer;
    return (
-      <article className="max-w-7xl px-6 py-14 mx-auto space-y-12 my-8 bg-yellow-200">
-         <div className="w-full mx-auto space-y-4 text-center">
+      <article className="max-w-7xl px-6  mx-auto space-y-12 relative my-8 bg-yellow-200">
+         <div className="w-full mx-auto space-y-4 text-center  ">
             <p className="text-xs font-semibold tracking-wider uppercase text-blue-500">#PRIME DIAGNOSIS</p>
             <div className="md:flex md:items-center md:justify-between">
                <div>
+                  <div className="bg-red-600 border-2 border-white shadow-lg absolute px-8 py-10 rounded-full top-8 left-[430px]">
+                     <h2 className="text-3xl font-bold text-yellow-300 font-pansy -rotate-12">Offers</h2>
+                     <h2 className="text-4xl text-center ml-4 font-bold text-white font-token -rotate-12">{discount_rate}</h2>
+                  </div>
                   <div className="w-full md:w-full px-3">
                      <div className="bg-[#E5D19F]  flex justify-between rounded-xl">
                         <div className=" w-full divide-y divide-dashed divide-[#C69F64]">
@@ -40,7 +45,7 @@ const Offer = ({ offer }) => {
             </div>
          </div>
 
-         <div className="pt-12 border-t border-gray-700 hidden md:block">
+         {/* <div className="pt-12 border-t border-gray-700 hidden md:block">
             <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
                <img src="https://source.unsplash.com/75x75/?portrait" alt="" className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start bg-gray-500 border-gray-700" />
                <div className="flex flex-col">
@@ -48,7 +53,7 @@ const Offer = ({ offer }) => {
                   <p className="text-gray-400">Sed non nibh iaculis, posuere diam vitae, consectetur neque. Integer velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque sit amet mi luctus ligula euismod lobortis ultricies et nibh.</p>
                </div>
             </div>
-         </div>
+         </div> */}
       </article>
    );
 };

@@ -26,6 +26,7 @@ import PaymentHistory from "../Pages/Admin/Dashboard/PaymentHistory";
 import Profile from "../Pages/UserDashboard/Profile";
 import Offers from "../Pages/Offers/Offers";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import AddOffers from "../Pages/Admin/Dashboard/AddOffers";
 
 const router = createBrowserRouter([
    {
@@ -167,10 +168,10 @@ const router = createBrowserRouter([
             ),
          },
 
-         // {
-         //    path: "",
-         //    element: <AllUsers />,
-         // },
+         {
+            path: "addOffers",
+            element: <AddOffers />,
+         },
          // {
          //    path: "",
          //    element: <AllUsers />,

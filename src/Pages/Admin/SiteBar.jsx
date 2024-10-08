@@ -8,6 +8,8 @@ import { IoHome, IoSettings } from "react-icons/io5";
 import { MdDateRange, MdEmail, MdPayments } from "react-icons/md";
 import { PiToolboxFill } from "react-icons/pi";
 import { RiLogoutBoxFill } from "react-icons/ri";
+import { MdLocalOffer } from "react-icons/md";
+
 import { NavLink } from "react-router-dom";
 import useAdmin from "../../Hooks/Admin/useAdmin";
 import useAuth from "../../Hooks/useAuth";
@@ -61,6 +63,15 @@ const SiteBar = () => {
                               >
                                  <AiOutlineMenuUnfold className="hidden md:block" size={20} />
                                  <span className="uppercase">manage items</span>
+                              </NavLink>
+                           </li>
+                           <li className="rounded-sm">
+                              <NavLink
+                                 to={"/dashboard/addOffers"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <MdLocalOffer className="hidden md:block" size={20} />
+                                 <span className="uppercase">AddOffers</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
