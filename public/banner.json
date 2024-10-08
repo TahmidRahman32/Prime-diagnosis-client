@@ -1,0 +1,42 @@
+[
+   {
+      "title": "Full Body Checkup",
+      "image": "https://i.ibb.co.com/M5T26DY/slider-1.png",
+      "text": "A comprehensive checkup to monitor overall health and detect early signs of diseases.",
+      "coupon_code": "HEALTH10",
+      "discount_rate": "10%",
+      "status": "Active"
+   },
+   {
+      "title": "Blood Test",
+      "image": "https://i.ibb.co.com/gtkJdkn/slider-2.png",
+      "text": "Includes a range of tests to assess your health markers and identify potential issues.",
+      "coupon_code": "BLOOD15",
+      "discount_rate": "15%",
+      "status": "Active"
+   },
+   {
+      "title": "ECG Monitoring",
+      "image": "https://i.ibb.co.com/qNr6fYF/slider-3.png",
+      "text": "A test to monitor your heart's electrical activity and identify any irregularities.",
+      "coupon_code": "ECG20",
+      "discount_rate": "20%",
+      "status": "Expired"
+   },
+   {
+      "title": "X-Ray Imaging",
+      "image": "https://i.ibb.co.com/M5T26DY/slider-1.png",
+      "text": "Advanced X-ray technology to capture detailed images of bones and internal organs.",
+      "coupon_code": "XRAY5",
+      "discount_rate": "5%",
+      "status": "Active"
+   },
+   {
+      "title": "Ultrasound Scan",
+      "image": "https://i.ibb.co.com/qNr6fYF/slider-3.png",
+      "text": "Non-invasive scan to visualize internal organs and monitor fetal development during pregnancy.",
+      "coupon_code": "ULTRA10",
+      "discount_rate": "10%",
+      "status": "Active"
+   }
+]

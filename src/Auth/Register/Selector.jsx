@@ -33,8 +33,8 @@ const Selector = ({ data, selected, setSelected }) => {
                   transition
                   className={clsx("w-[var(--input-width)] rounded-xl border  bg-white p-1 [--anchor-gap:var(--spacing-1)] empty:invisible", "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0")}
                >
-                  {filteredPeople.map((person) => (
-                     <ComboboxOption key={person.id} value={person} className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10">
+                  {filteredPeople.map((person,inx) => (
+                     <ComboboxOption key={inx} value={person} className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10">
                         <CheckIcon className="invisible size-4 focus:bg-black group-data-[selected]:visible text-gray-600" />
                         <div className="text-sm/6 font-pansy">{person.name}</div>
                      </ComboboxOption>

@@ -7,6 +7,7 @@ export default {
             super: "Great Vibes",
             pansy: "Lora",
             normal: "Assistant",
+            token: "Cinzel", 
          },
          backgroundImage: {
             loginImg: "url('./src/assets/login/Login.jpg')",
@@ -15,4 +16,5 @@ export default {
       },
    },
    plugins: [require("daisyui")],
+   themes: ["light", "cupcake"],
 };

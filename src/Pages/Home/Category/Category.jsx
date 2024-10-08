@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Category = () => {
    return (
-      <div className="grid grid-cols-4 max-w-7xl mx-auto my-3 gap-8">
+      <div className="md:grid grid-cols-4 max-w-7xl mx-auto my-3 space-y-2 gap-8">
          <div className="bg-sky-700 text-center text-white py-8 space-y-1 rounded-lg">
             <h5 className="font-pansy">Looking for doctors?</h5>
             <h2 className=" text-2xl font-bold">Find here</h2>

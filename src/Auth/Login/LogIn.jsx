@@ -70,7 +70,7 @@ const LogIn = () => {
          <Helmet>
             <title> Login</title>
          </Helmet>
-         <div className="hero bg-loginImg bg-center min-h-[calc(100vh-133px)]">
+         <div className="md:hero bg-loginImg bg-center min-h-[calc(100vh-133px)] mt-12">
             <div className="bg-[#43b27f] bg-opacity-40 rounded-xl mx-auto animate__animated animate__backInDown animate__slow">
                <div className="text-center lg:text-left "></div>
 
@@ -115,7 +115,7 @@ const LogIn = () => {
                            </div>
 
                            <div className="text-center md:w-full px-3 mb-6">
-                              <button className="relative flex w-full h-[50px] mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg">
+                              <button className="relative flex md:w-full h-[50px] w-96  mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg">
                                  <span className="relative z-10 font-pansy text-xl">LogIn</span>
                               </button>
                            </div>

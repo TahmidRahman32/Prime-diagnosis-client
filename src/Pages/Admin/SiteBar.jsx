@@ -18,9 +18,9 @@ const SiteBar = () => {
    const [isAdmin] = useAdmin();
    return (
       <div>
-         <div className="flex flex-col h-screen p-3 w-60 bg-[#02afe5] text-gray-100">
+         <div className="flex flex-col md:h-screen md:p-3 md:w-60 sm:w-full bg-[#02afe5] text-gray-100">
             <div className="space-y-3">
-               <div className="flex items-center justify-between">
+               <div className="md:flex items-center md:justify-between hidden">
                   <h2 className="text-2xl">Dashboard</h2>
                   <button className="p-2">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current text-gray-100">
@@ -30,7 +30,7 @@ const SiteBar = () => {
                      </svg>
                   </button>
                </div>
-               <div className="relative">
+               <div className="relative hidden">
                   <span className="absolute inset-y-0 left-0 flex items-center py-4">
                      <button type="submit" className="p-2 focus:outline-none focus:ring">
                         <svg fill="currentColor" viewBox="0 0 512 512" className="w-5 h-5 text-gray-400">
@@ -40,13 +40,16 @@ const SiteBar = () => {
                   </span>
                   <input type="search" name="Search" placeholder="Search..." className="w-full py-2 pl-10 text-sm dark:border- rounded-md focus:outline-none bg-gray-800 text-gray-100 focus:bg-gray-900" />
                </div>
-               <div className="flex-1">
-                  <ul className="pt-2  space-y-1 text-sm">
+               <div className="md:flex-1">
+                  <ul className="pt-2 md:block flex space-y-1 text-sm">
                      {isAdmin ? (
                         <>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/adminHome"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <IoHome size={20} color="#050227 " />
+                              <NavLink
+                                 to={"/dashboard/adminHome"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <IoHome className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">Admin Home</span>
                               </NavLink>
                            </li>
@@ -54,37 +57,37 @@ const SiteBar = () => {
                            <li className="rounded-sm">
                               <NavLink
                                  to={"/dashboard/manageItems"}
-                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
                               >
-                                 <AiOutlineMenuUnfold size={20} />
+                                 <AiOutlineMenuUnfold className="hidden md:block" size={20} />
                                  <span className="uppercase">manage items</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
                               <NavLink
                                  to={"/dashboard/manageBookings"}
-                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
                               >
-                                 <FaBook size={20} />
+                                 <FaBook className="hidden md:block" size={20} />
                                  <span className="uppercase">Manage bookings</span>
                               </NavLink>
                            </li>
 
                            <li className="rounded-sm  ">
-                              <NavLink to={"/dashboard/users"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <IoIosPeople size={20} />
+                              <NavLink to={"/dashboard/users"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 md:space-x-3 rounded-md  ")}>
+                                 <IoIosPeople className="hidden md:block" size={20} />
                                  <span className="uppercase">All User</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink to={"/dashboard/settings"} className="flex items-center p-2 space-x-3 rounded-md">
-                                 <IoSettings size={20} color="#050227 " />
+                           <li className="rounded-sm md:block hidden">
+                              <NavLink to={"/dashboard/settings"} className="flex items-center p-2 md:space-x-3 rounded-md">
+                                 <IoSettings className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">Settings</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
+                           <li className="rounded-sm md:block hidden">
                               <NavLink to={"/dashboard/Logout"} className="flex items-center p-2 space-x-3 rounded-md">
-                                 <RiLogoutBoxFill size={20} color="#050227 " />
+                                 <RiLogoutBoxFill className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">Logout</span>
                               </NavLink>
                            </li>
@@ -92,52 +95,61 @@ const SiteBar = () => {
                      ) : (
                         <>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/home"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <IoHome size={20} color="#050227 " />
+                              <NavLink to={"/dashboard/home"} className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                                 <IoHome className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">User Home</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/profile"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <CgProfile size={20} color="#050227 " />
+                              <NavLink
+                                 to={"/dashboard/profile"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <CgProfile className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">Profile</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/item"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <MdDateRange size={20} color="#050227 " />
+                              <NavLink to={"/dashboard/item"} className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                                 <MdDateRange className="hidden md:block" size={20} color="#050227 " />
                                  <span className="uppercase">Reservation</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
                               <NavLink
                                  to={"/dashboard/paymentHistory"}
-                                 className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
                               >
-                                 <MdPayments size={20} />
+                                 <MdPayments className="hidden md:block" size={20} />
                                  <span className="uppercase">payment history</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm">
-                              <NavLink to={"/dashboard/myCart"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <IoMdCart size={20} />
-                                 <span className="uppercase">my cart</span>
+                              <NavLink to={"/dashboard/myCart"} className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800 " : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                                 <IoMdCart className="hidden md:block" size={20} />
+                                 <span className="uppercase">cart</span>
                               </NavLink>
                            </li>
                            <li className="rounded-sm  ">
-                              <NavLink to={"/dashboard/addReview"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <PiToolboxFill size={20} />
+                              <NavLink
+                                 to={"/dashboard/addReview"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3  rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <PiToolboxFill className="hidden md:block" size={20} />
                                  <span className="uppercase">add review</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink to={"/dashboard/settings"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
-                                 <IoSettings size={20} color="#050227 " />
+                           <li className="rounded-sm hidden ">
+                              <NavLink
+                                 to={"/dashboard/settings"}
+                                 className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3  rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}
+                              >
+                                 <IoSettings className="" size={20} color="#050227 " />
                                  <span className="uppercase">Settings</span>
                               </NavLink>
                            </li>
-                           <li className="rounded-sm">
-                              <NavLink to={"/dashboard/logout"} className={({ isActive }) => (isActive ? "flex items-center p-2 space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
+                           <li className="rounded-sm hidden md:block">
+                              <NavLink to={"/dashboard/logout"} className={({ isActive }) => (isActive ? "flex items-center p-2 md:space-x-3 rounded-md uppercase bg-slate-800" : "font-medium text-black flex items-center p-2 space-x-3 rounded-md ")}>
                                  <RiLogoutBoxFill size={20} color="#050227 " />
                                  <span className="uppercase">Logout</span>
                               </NavLink>
@@ -146,17 +158,17 @@ const SiteBar = () => {
                      )}
                   </ul>
                   {/* main Link */}
-                  <div className="divider divide-slate-50"></div>
-                  <ul className="pt-2  space-y-1 text-sm">
+                  <div className="divider md:block hidden  divide-slate-50"></div>
+                  <ul className="pt-2 md:block hidden   space-y-1 text-sm ">
                      <li className="rounded-sm">
-                        <NavLink to={"/"} className="flex items-center p-2 space-x-3 rounded-md">
+                        <NavLink to={"/"} className="flex items-center p-2 space-x-3 rounded-md hover:text-yellow-400">
                            <IoHome size={20} color="#050227 " />
                            <span className="uppercase">Go to Home</span>
                         </NavLink>
                      </li>
 
                      <li className="rounded-sm">
-                        <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md">
+                        <NavLink to={"/dashboard/home"} className="flex items-center p-2 space-x-3 rounded-md hover:text-yellow-400">
                            <MdEmail size={20} color="#050227 " />
                            <span className="uppercase">Contact</span>
                         </NavLink>
@@ -164,12 +176,12 @@ const SiteBar = () => {
                   </ul>
                </div>
             </div>
-            <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
+            <div className="md:flex hidden  items-center p-2 mt-12 space-x-4 justify-self-end">
                <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-lg bg-gray-500" />
                <div>
                   <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                   <span className="flex items-center space-x-1">
-                     <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-400">
+                     <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-700">
                         View profile
                      </a>
                   </span>

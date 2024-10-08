@@ -4,7 +4,7 @@ import { MdMedicalServices, MdOutlineSupervisorAccount } from "react-icons/md";
 const Title = () => {
    return (
       <div>
-         <div className="grid grid-cols-3 max-w-7xl mx-auto my-16 gap-8">
+         <div className="md:grid grid-cols-3 max-w-7xl mx-auto my-12 gap-8 space-y-4">
             <div className="flex items-center gap-2">
                <div className="rounded-full p-2 border-dotted border-2 border-sky-500">
                   <GiGloves size={35} />

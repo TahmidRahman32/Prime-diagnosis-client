@@ -4,7 +4,7 @@ import useAxiosPublic from "../axios/useAxiosPublic";
 
 const useServiceData = () => {
    const axiosPublic = useAxiosPublic();
-   const { data: servicesData = [] } = useQuery({
+   const { data: servicesData = [],isPending } = useQuery({
       queryKey: ["services"],
       queryFn: async () => {
          const res = await axiosPublic.get(`/service`);
@@ -13,7 +13,7 @@ const useServiceData = () => {
       },
    });
 
-   return [servicesData];
+   return [servicesData,isPending];
 };
 
 export default useServiceData;

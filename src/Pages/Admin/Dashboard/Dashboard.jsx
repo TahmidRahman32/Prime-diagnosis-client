@@ -5,14 +5,14 @@ import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {
    return (
-      <div className="flex">
+      <div className="md:flex block">
          <Helmet>
             <title>Dashboard</title>
          </Helmet>
          <div>
             <SiteBar></SiteBar>
          </div>
-         <div className="flex-1">
+         <div className="md:flex-1 ">
             <Outlet></Outlet>
          </div>
       </div>

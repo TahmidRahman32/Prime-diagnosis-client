@@ -18,7 +18,7 @@ const OurAllPackages = () => {
          <div className="max-w-7xl mx-auto my-8">
             <h2 className="text-2xl font-bold font-pansy">Popular Packages</h2>
             <div className="divider my-0"></div>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="md:grid grid-cols-3 gap-5 space-y-4">
                {services.map((service) => (
                   <ServiceCard key={service._id} service={service}></ServiceCard>
                ))}{" "}

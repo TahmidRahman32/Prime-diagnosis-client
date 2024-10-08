@@ -7,14 +7,14 @@ import { updateProfile } from "firebase/auth";
 import { City, Country, State } from "country-state-city";
 import { Helmet } from "react-helmet";
 import useAuth from "../../Hooks/useAuth";
-
+import { ImSpinner9 } from "react-icons/im";
 import Selector from "./Selector";
 import useAxiosPublic from "../../Hooks/axios/useAxiosPublic";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_APIKEY;
 const img_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 const Register = () => {
    const [showPass, setShowPass] = useState(false);
-   const { createUser } = useAuth();
+   const { createUser, loading, setLoading } = useAuth();
    const axiosPublic = useAxiosPublic();
    const navigate = useNavigate();
    let countryData = Country.getAllCountries();
@@ -25,9 +25,14 @@ const Register = () => {
    const [city, setCity] = useState();
 
    // console.log(country);
-   const { register, handleSubmit } = useForm();
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm();
    const onSubmit = async (data) => {
-     
+      setLoading(true);
+
       const imgFile = { image: data.image[0] };
 
       const res = await axiosPublic.post(img_api, imgFile, {
@@ -42,7 +47,6 @@ const Register = () => {
          image: res.data.data.display_url,
          blood: data.blood,
       };
-    
 
       createUser(data.email, data.password)
          .then((result) => {
@@ -58,6 +62,7 @@ const Register = () => {
             navigate("/");
          })
          .catch(() => {});
+      setLoading(false);
    };
 
    useEffect(() => {
@@ -83,7 +88,7 @@ const Register = () => {
             <Helmet>
                <title> Register</title>
             </Helmet>
-            <div className="hero bg-loginImg bg-center min-h-[calc(100vh-133px)]">
+            <div className="md:hero mt-12 md:mt-0 bg-loginImg bg-center min-h-[calc(100vh-133px)]">
                <div className="bg-[#43b27f] bg-opacity-40 rounded-xl mx-auto animate__animated animate__backInDown animate__slow">
                   <div className="text-center lg:text-left "></div>
 
@@ -114,6 +119,7 @@ const Register = () => {
                                        className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                        required
                                     />
+                                    {errors.name && <span className="text-red-600 font-classic">url is required</span>}
                                  </div>
 
                                  <div className="form-control">
@@ -128,6 +134,7 @@ const Register = () => {
                                        className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                        required
                                     />
+                                    {errors.email && <span className="text-red-600 font-classic">Email is required</span>}
                                  </div>
                                  <div className="form-control">
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -141,6 +148,7 @@ const Register = () => {
                                        className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                        required
                                     />
+                                    {errors.image && <span className="text-red-600 font-classic">Image is required</span>}
                                  </div>
                                  <div className="my-2">
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -148,7 +156,7 @@ const Register = () => {
                                     </label>
 
                                     <select className="w-full rounded-md  focus:ring-opacity-75  py-3 px-3  dark:text-gray-800 focus:bg-neutral-300 appearance-none dark:border-gray-300" {...register("blood", { required: true })}>
-                                       <option value="">Select Blood...</option>
+                                       <option value="default">Select Blood...</option>
                                        <option value="A+">A+</option>
                                        <option value="A-">A-</option>
                                        <option value="O+">O+</option>
@@ -158,6 +166,7 @@ const Register = () => {
                                        <option value="B+">B+</option>
                                        <option value="B-">B-</option>
                                     </select>
+                                    {errors.blood && <span className="text-red-600 font-classic">Blood Group is required</span>}
                                  </div>
                                  <div className="my-2">
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -205,10 +214,23 @@ const Register = () => {
                                        {showPass ? <FaEyeSlash size={20} /> : <IoEyeSharp size={20} />}
                                     </span>
                                  </div>
+                                 {errors.password && <span className="text-red-600 font-classic">Password is required</span>}
+                                 {errors.password?.type === "minLength" && <span className="text-red-600 font-classic">Password is minLength 6 </span>}
+                                 {errors.password?.type === "maxLength" && <span className="text-red-600 font-classic">Password is maxLength </span>}
+                                 {errors.password?.type === "pattern" && <span className="text-red-600 font-classic"> must have one uppercase, one lowercase ,one number and one special characters Password </span>}
                               </div>
                               <div className="text-center md:w-full px-3 mb-6">
-                                 <button className="relative flex w-full h-[50px] mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg">
-                                    <span className="relative z-10 font-pansy text-xl">LogIn</span>
+                                 <button
+                                    disabled={loading}
+                                    className="relative flex md:w-full h-[50px] w-96  mx-auto items-center justify-center overflow-hidden bg-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-500 before:duration-500 before:ease-out hover:shadow-blue-600 hover:before:h-56 hover:before:w-full rounded-lg"
+                                 >
+                                    {loading ? (
+                                       <span className="relative z-10 font-pansy text-xl animate-spin mx-auto">
+                                          <ImSpinner9 />
+                                       </span>
+                                    ) : (
+                                       <span className="relative z-10 font-pansy text-xl">Register</span>
+                                    )}
                                  </button>
                               </div>
                            </form>

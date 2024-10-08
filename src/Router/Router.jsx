@@ -24,11 +24,14 @@ import ManageBookings from "../Pages/Admin/Dashboard/ManageBookings";
 import Doctors from "../Pages/Home/Doctors/Doctors";
 import PaymentHistory from "../Pages/Admin/Dashboard/PaymentHistory";
 import Profile from "../Pages/UserDashboard/Profile";
+import Offers from "../Pages/Offers/Offers";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
    {
       path: "/",
       element: <Main />,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
          {
             path: "/",
@@ -37,6 +40,14 @@ const router = createBrowserRouter([
          {
             path: "/location",
             element: <Location />,
+         },
+         {
+            path: "/offers",
+            element: (
+               <PrivateRouter>
+                  <Offers />
+               </PrivateRouter>
+            ),
          },
          {
             path: "/login",

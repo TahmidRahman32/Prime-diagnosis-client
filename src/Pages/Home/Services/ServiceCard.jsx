@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import { ImSpinner9 } from "react-icons/im";
 
 const ServiceCard = ({ service }) => {
    const { description, image_url, title, price, _id } = service;
-     
+
+   const { loading, setLoading } = useAuth();
+
    return (
       <div className="card bg-base-100 w-96 shadow-xl">
          <figure>
@@ -18,7 +22,13 @@ const ServiceCard = ({ service }) => {
             <div className="card-actions justify-end">
                <Link to={`details/${_id}`}>
                   <button className="relative flex h-[40px] w-28 rounded-lg items-center justify-center overflow-hidden bg-gradient-to-r from-sky-800 to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-[#43b27f] hover:before:h-56 hover:before:w-56">
-                     <span className="relative z-10 font-pansy text-xl ">Details</span>
+                     {loading ? (
+                        <span className="relative z-10 font-pansy text-xl animate-spin mx-auto">
+                           <ImSpinner9 />
+                        </span>
+                     ) : (
+                        <span className="relative z-10 font-pansy text-xl">Details</span>
+                     )}
                   </button>
                </Link>
             </div>

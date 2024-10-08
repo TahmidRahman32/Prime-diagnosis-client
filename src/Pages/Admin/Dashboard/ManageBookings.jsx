@@ -1,15 +1,21 @@
 import React from "react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-
 import NotPound from "../../../Sheard/NotPound";
-import UseBookingData from "../../../Hooks/BookingData/UseBookingData";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/axios/useAxiosSecure";
 
 const ManageBookings = () => {
-   const [bookings] = UseBookingData();
+   const axiosSecure = useAxiosSecure();
+   const { data: bookingAll = [], refetch } = useQuery({
+      queryKey: ["bookingAll"],
+      queryFn: async () => {
+         const res = await axiosSecure.get(`/bookingsAll`);
+         return res.data;
+      },
+   });
 
    const handleDeleteBtn = (book) => {
       Swal.fire({
@@ -41,10 +47,10 @@ const ManageBookings = () => {
          <Helmet>
             <title> manageBookings</title>
          </Helmet>
-         {bookings.length > 0 ? (
+         {bookingAll.length ? (
             <div className="max-w-screen-xl mx-auto mt-8">
                <div className="flex justify-between">
-                  <h2 className="text-3xl uppercase font-bold">Your Booking List: {bookings.length}</h2>
+                  <h2 className="text-3xl uppercase font-bold">Your Booking List: {bookingAll.length}</h2>
                   <div className="flex gap-5">
                      <h2 className="text-3xl uppercase font-bold">
                         Visit Price: $<span className="text-green-600"></span>
@@ -57,18 +63,17 @@ const ManageBookings = () => {
                      <thead className="bg-[#02afe5] ">
                         <tr>
                            <th>#</th>
-
                            <th>Name</th>
                            <th>email</th>
                            <th>subject</th>
-                           <th> Date And Time</th>
+                           <th>Date And Time</th>
                            <th>Doctor</th>
-                           <th>pay</th>
+
                            <th>delete</th>
                         </tr>
                      </thead>
                      <tbody className="mx-8">
-                        {bookings.map((booking, inx) => (
+                        {bookingAll.map((booking, inx) => (
                            <tr key={booking._id}>
                               <td className="font-bold">{inx + 1} </td>
 
@@ -81,15 +86,6 @@ const ManageBookings = () => {
                               <th>{booking.subject}</th>
                               <th>{booking.date}</th>
                               <th>{booking.doctor}</th>
-                              <th>
-                                 {" "}
-                                 <Link to={"/dashboard/payment"}>
-                                    <button className="relative rounded-xl flex h-[40px] px-4 items-center justify-center overflow-hidden bg-gradient-to-r from-[#1E2761] to-[#43b27f] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-[#43b27f] before:duration-500 before:ease-out hover:shadow-cyan-400 hover:before:h-56 hover:before:w-56">
-                                       <span className="relative z-10 font-pansy font-bold">Pay</span>
-                                    </button>
-                                 </Link>
-                              </th>
-
                               <th>
                                  <button onClick={() => handleDeleteBtn(booking._id)} title="delete" className="bg-red-500 px-2 py-2 rounded-full">
                                     <RiDeleteBin5Fill size={25} />
