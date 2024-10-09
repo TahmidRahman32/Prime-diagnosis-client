@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { ImSpinner9 } from "react-icons/im";
-
+import "animate.css";
 const ServiceCard = ({ service }) => {
    const { description, image_url, title, price, _id } = service;
 
    const { loading, setLoading } = useAuth();
 
    return (
-      <div className="card bg-base-100 w-96 shadow-xl">
+      <div className="card bg-base-100  shadow-xl animate__animated animate__fadeInUp animate__slow">
          <figure>
             <img src={image_url} alt="Shoes" />
          </figure>

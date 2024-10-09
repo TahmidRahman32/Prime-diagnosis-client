@@ -19,7 +19,7 @@ const Services = () => {
                <span className="loading loading-bars loading-lg"></span>
             </div>
          ) : (
-            <div className="md:grid grid-cols-3 gap-5 space-y-3 z-0">
+            <div className="md:grid lg:grid-cols-3 md:grid-cols-2 gap-5 space-y-3 z-0">
                {servicesData.slice(0, 6).map((service) => (
                   <ServiceCard key={service._id} service={service}></ServiceCard>
                ))}{" "}

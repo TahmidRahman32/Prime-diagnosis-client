@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 
 // import required modules
 
-import { Navigation, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, A11y } from "swiper/modules";
 
 import slider1 from "../../../assets/slider/slider-1.png";
 // import slider2 from "../../../assets/slider/slider-2.jpg";
@@ -26,13 +26,13 @@ const Banner = () => {
    });
 
    return (
-      <div className="mt-16 md:my-0">
-         <Swiper navigation={true} modules={[Navigation, Autoplay]} autoplay className="mySwiper">
+      <div className="mt-16 md:my-0 md:mx-12 lg:mx-16">
+         <Swiper modules={[Autoplay, Pagination, A11y]} autoplay pagination={{ clickable: true }} className="mySwiper">
             {bannerData.map((banner, inx) => (
                <SwiperSlide key={inx}>
-                  <div className="md:flex bg-[#02afe5] justify-center items-center ">
+                  <div className="md:flex  justify-center items-center ">
                      <BannerImg banner={banner}></BannerImg>
-                     <img className="md:w-[930px] w-96" src={banner.image} alt="" />
+                     <img className="md:w-[930px] md:h-[600px] w-96" src={banner.image} alt="" />
                   </div>
                </SwiperSlide>
             ))}
