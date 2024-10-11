@@ -7,11 +7,12 @@ export default {
             super: "Great Vibes",
             pansy: "Lora",
             normal: "Assistant",
-            token: "Cinzel", 
+            token: "Cinzel",
          },
          backgroundImage: {
             loginImg: "url('./src/assets/login/Login.jpg')",
             headersImg: "url('/src/assets/logo/img5.jpg')",
+            reviewBg: "url('/src/assets/logo/review-bg.jpg')",
          },
       },
    },

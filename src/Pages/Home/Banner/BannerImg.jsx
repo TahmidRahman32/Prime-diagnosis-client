@@ -2,10 +2,9 @@ const BannerImg = ({ banner }) => {
    const { coupon_code, discount_rate, status, text, title } = banner;
 
    return (
-      <div className=" space-y-3  justify-between text-center md:block ">
-         <p className="text-ms text-black  font-token">Your trusted healthcare partner</p>
+      <div className=" space-y-3  justify-between  md:block ">
+         <p className="text-ms text-gray-500 font-token">Your trusted healthcare partner</p>
          <h2 className="font-bold text-5xl font-pansy ">{title}</h2>
-         {/* <p className="text-ms  font-normal">{text}</p> */}
          <div className="w-full md:w-96  mb-6">
             {status === "Active" ? (
                <div className="bg-[#E5D19F]  md:w-[550px] flex justify-between rounded-xl">

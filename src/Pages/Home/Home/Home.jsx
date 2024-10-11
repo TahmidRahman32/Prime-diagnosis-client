@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
 import Services from "../Services/Services";
 import Title from "../Title/Title";
+import ViewReview from './../ViewReview/ViewReview';
 
 const Home = () => {
    return (
@@ -14,6 +15,7 @@ const Home = () => {
          <Category></Category>
          <Title></Title>
          <Services></Services>
+         <ViewReview></ViewReview>
       </div>
    );
 };

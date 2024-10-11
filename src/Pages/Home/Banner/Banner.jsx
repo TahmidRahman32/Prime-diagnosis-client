@@ -26,13 +26,13 @@ const Banner = () => {
    });
 
    return (
-      <div className="mt-16 md:my-0 md:mx-12 lg:mx-16">
-         <Swiper modules={[Autoplay, Pagination, A11y]} autoplay pagination={{ clickable: true }} className="mySwiper">
+      <div className="mt-16 md:my-0  md:mx-12 lg:mx-16">
+         <Swiper modules={[Autoplay, Pagination]} autoplay pagination={{ clickable: true }} speed={1600}  flipEffect={{ slideShadows: false }} className="mySwiper">
             {bannerData.map((banner, inx) => (
                <SwiperSlide key={inx}>
                   <div className="md:flex  justify-center items-center ">
-                     <BannerImg banner={banner}></BannerImg>
-                     <img className="md:w-[930px] md:h-[600px] w-96" src={banner.image} alt="" />
+                  <BannerImg banner={banner}></BannerImg>
+                  <img className="md:w-[930px] md:h-[550px] w-96" src={banner.image} alt="" />
                   </div>
                </SwiperSlide>
             ))}
